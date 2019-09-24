@@ -1,0 +1,36 @@
+- name: Playbook to ensure pre-requisites are met for okd nodes
+  hosts: nodes
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Install neccessary software
+      yum:
+        name:
+          - wget
+          - git
+          - net-tools
+          - bind-utils 
+          - yum-utils 
+          - iptables-services 
+          - bridge-utils 
+          - bash-completion 
+          - kexec-tools 
+          - sos # no sos package when using amazon linux 2
+          - psacct
+          - docker
+        state: latest
+    - name: Copies the docker-storage-setup config file to be used for configuring docker storage 
+      template:
+        src: templates/docker-storage-setup
+        dest: /etc/sysconfig/docker-storage-setup  
+
+    # Always reports changed for the momement. However, the command itself will not reconfigure the storage
+    # once setup .. unless other changes are made
+    - name: Runs the docker-storage-setup command to setup docker storage based on the config file copied
+      command: docker-storage-setup
+    
+    - name: Enable and start the docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
