@@ -13,17 +13,12 @@ For me to use in aws for preparing ec2 instances as ocp nodes
 
 # General steps
 1. Create ansible cn ec2 instance
-	--> use launch template with spot instance
-	--> use user-data to install ansible upon provisioning
-
-	User-data:
-	----------
 	  # sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 	  # sudo yum -y install ansible git
 	  
 	  Upload aws-jase.pem to the ansible control node to /home/ec2-user/.ssh/
 
-	**Assumptions: instance has internet access
+	  *Assumptions: all instances will have internet access
 
 	  # git clone https://github.com/bkthong/ocp-3.11-prepare-hosts/
 	  # git clone https://github.com/openshift/openshift-ansible
