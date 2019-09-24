@@ -8,3 +8,5 @@ For me to use in aws for preparing ec2 instances as ocp nodes
   and this key can be used to access all the nodes
 - Docker storage volume will be configured to use overlay2, using the {{ docker_storage_block_device }} 
   inventory variable to identify the available device for docker to use as storage
+- "inventory" file is used with prepare_hosts.yml playbook
+- "install_inventory" file is used with the okd/ocp prerequisites.yml and deploy_cluster.yml

@@ -18,7 +18,18 @@
           - sos # no sos package when using amazon linux 2
           - psacct
           - docker
+          - NetworkManager  #centos 7 ami image did not use NM
+          - firewalld #centos 7 ami image did not use firewalld
         state: latest
+    - name: Enable and start NM and firewalld
+      service:
+        name: "{{ item }}" 
+        state: started
+        enabled: true
+      loop: 
+        - NetworkManager
+        - firewalld
+
     - name: Copies the docker-storage-setup config file to be used for configuring docker storage 
       template:
         src: templates/docker-storage-setup

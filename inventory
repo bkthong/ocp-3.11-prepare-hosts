@@ -1,5 +1,6 @@
 [nodes]
-ip-10-0-0-234.ec2.internal
+ip-10-0-0-134.ec2.internal
+ip-10-0-0-248.ec2.internal
 
 [nodes:vars]
 #/dev/xvdb when using centos ami, /dev/sdb when using amazon linux 2
