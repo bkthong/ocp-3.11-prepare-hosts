@@ -13,17 +13,17 @@ For me to use in aws for preparing ec2 instances as ocp nodes
 
 # General steps
 1. Create ansible cn ec2 instance
-	  # sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-	  # sudo yum -y install ansible git
+	  $ sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	  $ sudo yum -y install ansible git
 	  
 	  Upload aws-jase.pem to the ansible control node to /home/ec2-user/.ssh/
 
 	  *Assumptions: all instances will have internet access
 
-	  # git clone https://github.com/bkthong/ocp-3.11-prepare-hosts/
-	  # git clone https://github.com/openshift/openshift-ansible
-	  # cd openshift-ansible
-	  # git checkout release-3.11
+	  $ git clone https://github.com/bkthong/ocp-3.11-prepare-hosts/
+	  $ git clone https://github.com/openshift/openshift-ansible
+	  $ cd openshift-ansible
+	  $ git checkout release-3.11
 
 2. Create the ec2 instances using centos 7 ami with additiobal ebs block device
    that will be used for docker storage. I used 20Gb for root and 20GB for the
