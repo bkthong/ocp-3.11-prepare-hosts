@@ -4,16 +4,18 @@ nodes
 etcd
 
 [masters]
-ip-10-0-0-134.ec2.internal openshift_schedulable=true containerized=false
+ip-10-0-0-25.ec2.internal openshift_schedulable=true containerized=false
+
 
  
 
 [etcd]
-ip-10-0-0-134.ec2.internal
+ip-10-0-0-25.ec2.internal 
 
 [nodes]
-ip-10-0-0-134.ec2.internal openshift_node_group_name="node-config-master-infra"
-ip-10-0-0-248.ec2.internal openshift_node_group_name="node-config-compute"
+ip-10-0-0-25.ec2.internal openshift_node_group_name="node-config-master-infra"
+ip-10-0-0-149.ec2.internal openshift_node_group_name="node-config-compute"
+ip-10-0-0-223.ec2.internal openshift_node_group_name="node-config-compute"  
 
  
 
@@ -26,15 +28,14 @@ ansible_sudo=true
 enable_excluders=false
 enable_docker_excluder=false
 ansible_service_broker_install=false
-containerized=false
 openshift_disable_check=disk_availability,memory_availability,docker_storage,docker_image_availability
 openshift_deployment_type=origin
 
- 
+os_firewall_use_firewalld=true 
 
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
 
-openshift_public_hostname=ec2-3-85-235-230.compute-1.amazonaws.com
+openshift_public_hostname=ec2-100-24-3-60.compute-1.amazonaws.com
 openshift_master_api_port=8443
 openshift_master_console_port=8443
 openshift_metrics_install_metrics=false
